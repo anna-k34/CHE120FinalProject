@@ -4,7 +4,7 @@ AK-Anna Kelley's comments
 """
 
 
-
+#AK-Import statement necessary to run the game
 import pygame
 import random
 import math
@@ -12,9 +12,10 @@ import math
 # initializing pygame
 pygame.init()
 
-# creating screen
+#AK-create the dimensions of the game screen in variables 
 screen_width = 800
 screen_height = 600
+#AK 
 screen = pygame.display.set_mode((screen_width,
                                   screen_height))
 
@@ -75,9 +76,37 @@ bullet_Xchange = 0
 bullet_Ychange = 3
 bullet_state = "rest"
 
+#AK this function determines whether or not there is a collision between two object
+#AK in this case it will be checking if the bullet "runs into" the alien
 def isCollision(x1, x2, y1, y2):
+    '''
+    AK
+
+    Parameters
+    ----------
+    x1 : Int
+        x coordinate for first object
+    x2 : Int
+        x coordinate for second object
+    y1 : Int
+        y coordinate for first object
+    y2 : Int
+        y coordinate for second object
+
+    Returns
+    -------
+    bool
+        This will return true if the distance is within 50 pixels, or if the collision is detected
+        It will return false if there is no collision detected and the two objects are not close enough
+
+    '''
+    '''AK the distance between the two is measured by squaring the 
+    distance between each axis variable and then taking the square root of these 
+    added together'''
+    
     distance = math.sqrt((math.pow(x1 - x2,2)) +
                          (math.pow(y1 - y2,2)))
+    #AkIf the distance between the two is less or equal to 50, a colllision is detected
     if distance <= 50:
         return True
     else:
@@ -95,10 +124,14 @@ def bullet(x, y):
     bullet_state = "fire"
 
 running = True
+#AK start the game by using a while loop
 while running:
 
-    # RGB
+    #AK Fill the pygame screen with black
     screen.fill((0, 0, 0))
+    
+    #AK this for loop looks at if the user decides to "quit" the game
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
