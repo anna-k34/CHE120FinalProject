@@ -62,19 +62,22 @@ def show_score(x, y):
     score = font.render("Points: " + str(score_val),
                         True, (255,255,255))
     screen.blit(score, (x , y ))
-
+#VV - render() "game over" in white text (255,255,255 is the colour code) and displays it at (190,250) which is centre of screen
 def game_over():
     game_over_text = game_over_font.render("GAME OVER",
                                            True, (255,255,255))
     screen.blit(game_over_text, (190, 250))
 
-
+#VV - loads the spaceship image file and sizes it to 100x100 pixels
 playerImageUnscaled = pygame.image.load('spaceship.png')
 playerImage=pygame.transform.scale(playerImageUnscaled,(100,100))
+#VV - sets the player position at 370 pixels from left (around centre) and 490 from top (close to bottom of screen)
 player_X = 370
 player_Y = 490
+#VV - sets player's horizontal speed as 0 (not moving initially)
 player_Xchange = 0
 
+#VV - creates empty lists to store the alien's data (image, x and y position, and horizontal and vertical speed)
 invaderImage = []
 invader_X = []
 invader_Y = []
