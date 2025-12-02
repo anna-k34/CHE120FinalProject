@@ -26,21 +26,35 @@ screen = pygame.display.set_mode((screen_width,
 
 # caption and icon
 #VV- sets the title text in windows title bar
+#AK create the screen using the width and height variables
+screen = pygame.display.set_mode((screen_width,
+                                  screen_height))
+
+#AK the original creater set the label of the pygame screen 
 pygame.display.set_caption("Welcome to Space\
 Invaders Game by:- styles")
 
 
+
 # Score
 #VV - initializes player's score starting at 0
+
 score_val = 0
 #VV - sets position where score is displayed (5 pixels from left, and 5 pixels top)
 scoreX = 5
 scoreY = 5
+
 #VV - creates font object to display the player's score
 font = pygame.font.Font('freesansbold.ttf', 20)
 
 # Game Over
 #VV - creates large font size for "game over" message
+
+#AK create a new font for the regular text
+font = pygame.font.Font('freesansbold.ttf', 20)
+
+#AK create a new font to be used in the game over statement
+
 game_over_font = pygame.font.Font('freesansbold.ttf', 64)
 
 #VV - render() creates a text surface showing "Points:" and the current score value. True enables smooth text (anti-aliasing) and (255,255,255) is white colour code, blit() draws score text on the screen in position of (x,y)
@@ -140,26 +154,35 @@ while running:
     #AK Fill the pygame screen with black
     screen.fill((0, 0, 0))
     
-    #AK this for loop looks at if the user decides to "quit" the game
-    
+    #AK This for loop tracks the user's "events with the keyboard. Basically it looks for if they press a key or click a button
+    #AK It checks each event the user does and compares it with the event type's inside of the for loop to see if they match
     for event in pygame.event.get():
+        #AK this if looks at if the user decides to "quit" the game-The event test looks for if they press the X button on the pygame display
         if event.type == pygame.QUIT:
+            #AK if the user presses the exit button quit this running loop so the game can end
             running = False
-
+        #AK this if statement looks at if the user clicks certain buttons to move the spaceship or fire a bullet
         if event.type == pygame.KEYDOWN:
+            #AK this statement checks if the user clicked the left arrow, and moves spaceship left as a result by changing its X change var
             if event.key == pygame.K_LEFT:
                 player_Xchange = -1.7
+            #AK this statement checks if the user clicked the right arrow, and moves spaceship right as a result by adjusting its X change var
             if event.key == pygame.K_RIGHT:
                 player_Xchange = 1.7
+            #AK this statement checks if the user clicked on the space key, which in turn will fire the bullet at the invaders
             if event.key == pygame.K_SPACE:
-              
+                #AK this if statement checks if they already have an active button, can't click the space button twice
                 if bullet_state == "rest":
+                    #Sets the bullet x variable to where the invader is so it can fire from the player's position
                     bullet_X = player_X
+                    #This calls the bullet function to create a bullet
                     bullet(bullet_X, bullet_Y)
+        #AK this statement just makes sure the spaceship doesn't move infinitely-if the user releases the key then the spaceship stops moving
         if event.type == pygame.KEYUP:
+            #AK set the player's x change var to 0 so it will stop moving
             player_Xchange = 0
 
-
+    #AK update the spaceship's position using the player x change variable
     player_X += player_Xchange
     for i in range(no_of_invaders):
         invader_X[i] += invader_Xchange[i]
@@ -177,7 +200,7 @@ while running:
         if invader_Y[i] >= 450:
             if abs(player_X-invader_X[i]) < 80:
                 for j in range(no_of_invaders):
-                    invader_Y[j] = 2000
+                    invader_Y[j] = 20005
                     
                 game_over()
                 break
