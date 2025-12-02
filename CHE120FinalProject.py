@@ -245,9 +245,10 @@ while running:
     elif player_X >= 750:
         player_X = 750
 
-
+#VV - draw the player spaceship at its current position
     player(player_X, player_Y)
+  #VV - displays the player's score on screen
     show_score(scoreX, scoreY)
     pygame.display.update()
-
+#VV - when game loop ends, closes pygame
 pygame.quit()
