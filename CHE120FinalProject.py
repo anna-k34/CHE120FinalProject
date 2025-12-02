@@ -83,20 +83,26 @@ invader_X = []
 invader_Y = []
 invader_Xchange = []
 invader_Ychange = []
+#VV - sets number of aliens to 8
 no_of_invaders = 8
 
+#VV - for loop, loops 8 times to set up each alien
 for num in range(no_of_invaders):
     alienImg=pygame.image.load('alien.png')
+  #VV - loads and resizes aliens to 40x40 pixels and adds to list
     alienImg = pygame.transform.scale(alienImg, (40, 40))   
     invaderImage.append(alienImg)
+  #VV - sets random starting positions for aliens (64-737 in x keeps within screen dimensions, and 30-180 y keeps aliens in top portion of screen)
     invader_X.append(random.randint(64, 737))
     invader_Y.append(random.randint(30, 180))
+  #VV - sets movement speeds of aliens (horizontally: 0.6 pixels/frame, and vertically 50 drop distance when hit screen edge)
     invader_Xchange.append(0.6)
     invader_Ychange.append(50)
 
-
+#VV - loads and resizes bullet image to 20x30 pixels
 bulletImage = pygame.image.load('bullet.png')
 bulletImage=pygame.transform.scale(bulletImage,(20,30))
+#VV - sets bullets initial position at 0
 bullet_X = 0
 bullet_Y = 500
 bullet_Xchange = 0
