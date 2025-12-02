@@ -6,11 +6,12 @@ RL-Rhea Lam's comments
 
 
 #AK-Import statement necessary to run the game
+#RL- random and math are built-in python modules and pygame is a set of open-source python modules
 import pygame
 import random
 import math
 
-# initializing pygame
+#RL-initializing pygame by calling pygame.init(), which sets up all modules part of pygame and prepares the environment for the code to run
 pygame.init()
 
 #AK-create the dimensions of the game screen in variables 
