@@ -105,8 +105,10 @@ bulletImage=pygame.transform.scale(bulletImage,(20,30))
 #VV - sets bullets initial position at 0
 bullet_X = 0
 bullet_Y = 500
+#VV - sets bullets horizontal movement speed at 0 (will shoot straight up) and vertical speed at 3 pixels per frame upward
 bullet_Xchange = 0
 bullet_Ychange = 3
+#VV - tracks whether bullet is currently moving ("fire") or ready to shoot ("rest")
 bullet_state = "rest"
 
 #AK this function determines whether or not there is a collision between two object
@@ -195,43 +197,49 @@ while running:
     player_X += player_Xchange
     for i in range(no_of_invaders):
         invader_X[i] += invader_Xchange[i]
-
+    #VV - if bullet reaches top of screen, reset it back to bottom of screen and set the state back to "rest" so it can be fired again
     if bullet_Y <= 0:
         bullet_Y = 600
         bullet_state = "rest"
+    #VV - if bullet is currently fired (in movement), draw it at its current position and move it upward by subtracting bullet_Ychange
     if bullet_state == "fire":
         bullet(bullet_X, bullet_Y)
         bullet_Y -= bullet_Ychange
 
-
+#VV - for loop, loop through each of the 8 aliens
     for i in range(no_of_invaders):
-        
+        #VV - if alien is vertically within y of 450 pixels (near player level), check how close the alien is horizontally (and if within 80 pixels)
         if invader_Y[i] >= 450:
+          #VV - abs() ensures the distance between is positive, and if the distance between the player and alien is less than 80, move all aliens off the screen (Y=20005)
             if abs(player_X-invader_X[i]) < 80:
                 for j in range(no_of_invaders):
                     invader_Y[j] = 20005
-                    
+                #VV - display "game over" message and exit the alien loop
                 game_over()
                 break
-
+        #VV - if the alien hits the right edge (x is more or equal to 735) or left edge (x is less or equal to 0), then reverse its horizontal direction (multiply speed by -1) to make the alien "bounce" off the side and move the alien down by 50 pixels
         if invader_X[i] >= 735 or invader_X[i] <= 0:
             invader_Xchange[i] *= -1
             invader_Y[i] += invader_Ychange[i]
         # Collision
+      #VV - check if bullet has collided with alien
         collision = isCollision(bullet_X, invader_X[i],
                                 bullet_Y, invader_Y[i])
+      #VV - if collision is detected (bullet hits alien), increase score by 1
         if collision:
             score_val += 1
             bullet_Y = 600
+          #VV - reset the bullet to the bottom of the screen and set state to "rest"
             bullet_state = "rest"
+          #VV - respawn the hit/collided alien at a new random position at the top of the screen
             invader_X[i] = random.randint(64, 736)
             invader_Y[i] = random.randint(30, 200)
             invader_Xchange[i] *= -1
-
+        #VV - draw the current alien at updated position
         invader(invader_X[i], invader_Y[i], i)
 
 
-
+#VV - ensures the player cannot go off the screen (keeps within screen dimension boundaries)
     if player_X <= 16:
         player_X = 16;
     elif player_X >= 750:
