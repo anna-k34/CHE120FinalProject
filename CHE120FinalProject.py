@@ -8,6 +8,7 @@ VV-Vivian Vo's comments
 
 #AK-Import statement necessary to run the game
 #RL- random and math are built-in python modules and pygame is a set of open-source python modules
+#VV- pygame is for graphics, sounds and inputs. random is for alien positions (generate random numbers). math is for collision detection (math calculations).
 import pygame
 import random
 import math
@@ -19,24 +20,30 @@ pygame.init()
 screen_width = 800
 screen_height = 600
 #AK 
+#VV- creates actual game window with dimesnsions defined above 
 screen = pygame.display.set_mode((screen_width,
                                   screen_height))
 
 # caption and icon
+#VV- sets the title text in windows title bar
 pygame.display.set_caption("Welcome to Space\
 Invaders Game by:- styles")
 
 
 # Score
+#VV - initializes player's score starting at 0
 score_val = 0
+#VV - sets position where score is displayed (5 pixels from left, and 5 pixels top)
 scoreX = 5
 scoreY = 5
+#VV - creates font object to display the player's score
 font = pygame.font.Font('freesansbold.ttf', 20)
 
 # Game Over
+#VV - creates large font size for "game over" message
 game_over_font = pygame.font.Font('freesansbold.ttf', 64)
 
-
+#VV - render() creates a text surface showing "Points:" and the current score value. True enables smooth text (anti-aliasing) and (255,255,255) is white colour code, blit() draws score text on the screen in position of (x,y)
 def show_score(x, y):
     score = font.render("Points: " + str(score_val),
                         True, (255,255,255))
