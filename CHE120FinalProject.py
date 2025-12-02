@@ -157,9 +157,9 @@ def bullet(x, y):
     global bullet_state
     screen.blit(bulletImage, (x, y))
     bullet_state = "fire"
-
+#AK track the game state by using a booean variabl
 running = True
-#AK start the game by using a while loop
+#AK start the game by using a while loop that looks at the boolean var
 while running:
 
     #AK Fill the pygame screen with black
