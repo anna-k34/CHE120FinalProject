@@ -11,11 +11,13 @@ github username: anna-k34
 #AK-Import statement necessary to run the game
 #RL- random and math are built-in python modules and pygame is a set of open-source python modules
 #VV- pygame is for graphics, sounds and inputs. random is for alien positions (generate random numbers). math is for collision detection (math calculations).
+#NA- random module is mainly used to position the aliens at random positions
 import pygame
 import random
 import math
 
 #RL-initializing pygame by calling pygame.init(), which sets up all modules part of pygame and prepares the environment for the code to run
+#NA- One time setup call that gets pygame ready to draw on the screen
 pygame.init()
 
 #AK-create the dimensions of the game screen in variables 
