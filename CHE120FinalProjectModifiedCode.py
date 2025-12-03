@@ -35,6 +35,7 @@ font = pygame.font.Font('freesansbold.ttf', 20)
 
 levelScores=[10,25,40]
 # Game Over
+#NA- Use a large font for important notices such as 'GAME OVER'
 game_over_font = pygame.font.Font('freesansbold.ttf', 64)
 playerImageUnscaled = pygame.image.load('spaceship.png')
 playerImage=pygame.transform.scale(playerImageUnscaled,(100,100))
