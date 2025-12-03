@@ -45,7 +45,7 @@ background=pygame.image.load('background.jpg')
 background=pygame.transform.scale(background,(800,600))
 
 def menu_screen():
-  screen.fill((0,0,0)
+  screen.fill((0,0,0))
   text = font.render("Space Invaders", True, (255,255,255))
   screen.blit(text,(screen_width // 2 - text.get_width() // 2, screen_height // 4))
   start_button_rect = pygame.Rect(screen_width // 2 - 100, screen_height // 2, 200, 50)
