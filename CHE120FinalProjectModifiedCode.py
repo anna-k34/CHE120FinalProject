@@ -2,6 +2,7 @@
 """
 
 @author: annak
+github username: anna-k34
 """
 # -*- coding: utf-8 -*-
 """
@@ -25,7 +26,7 @@ screen_width = 800
 screen_height = 600
 screen = pygame.display.set_mode((screen_width,
                                   screen_height))
-
+pygame.display.set_caption("CHE120 Space Invaders Game")
 
 # Score
 
@@ -67,11 +68,13 @@ def game_over():
                                            True, (255,255,255))
     text=font.render("The game is over! If you would like to replay, press enter", True, (255,255,255))
     text2=font.render("If you would like to exit, press the X", True, (255,255,255))
+    smallfont = pygame.font.Font('freesansbold.ttf', 15)
+    text3=smallfont.render("github user: anna-k34", True, (255,255,255))
     
-
     screen.blit(game_over_text, (190, 250))
     screen.blit(text, (105, 400))
     screen.blit(text2, (195, 450))
+    screen.blit(text3,(620,570))
     pygame.display.update()
     pygame.time.delay(1000)
     enterKeyCheck=True
