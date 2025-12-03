@@ -44,6 +44,7 @@ Invaders Game by:- styles")
 #VV - initializes player's score starting at 0
 
 score_val = 0
+#NA- starts with the players score as zero this increases each time the player hits the alien with a blade 
 #VV - sets position where score is displayed (5 pixels from left, and 5 pixels top)
 scoreX = 5
 scoreY = 5
