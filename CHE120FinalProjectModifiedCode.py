@@ -46,7 +46,7 @@ bulletImage=pygame.transform.scale(bulletImage,(20,30))
 background=pygame.image.load('background.jpg')
 background=pygame.transform.scale(background,(800,600))
 
-'''
+
 def menu_screen():
     """Display the starting menu and wait for player to click Start"""
     in_menu = True
@@ -97,7 +97,7 @@ def menu_screen():
                     in_menu = False
     
     return True
-  '''
+'''
 def menu_screen():
     """Display a start menu with a START button."""
     menu_running = True
@@ -150,7 +150,8 @@ def menu_screen():
             if event.type == pygame.MOUSEBUTTONDOWN:
                 if start_button.collidepoint(event.pos):
                     return True  # start the game
-          
+
+'''
 def levelComplete(level):
     text=game_over_font.render("Level " + str(level) + " Complete!", True, (255,255,255))
     screen.blit(text,(150,260))
