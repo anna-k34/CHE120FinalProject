@@ -17,7 +17,6 @@ import random
 import math
 
 #RL-initializing pygame by calling pygame.init(), which sets up all modules part of pygame and prepares the environment for the code to run
-#NA- One time setup call that gets pygame ready to draw on the screen
 pygame.init()
 
 #AK-create the dimensions of the game screen in variables 
@@ -152,16 +151,23 @@ def isCollision(x1, x2, y1, y2):
         return False
 
 def player(x, y):
+    #RL-Draw the player sprite on the screen.
+    #RL-The offsets (-16, +10) adjust the drawing position so the image appears centered relative to the player's logical (x, y) location.
     screen.blit(playerImage, (x - 16, y + 10))
 
 def invader(x, y, i):
+    #RL-Draw the i-th invader sprite at the given (x, y) location.
     screen.blit(invaderImage[i], (x, y))
 
 def bullet(x, y):
     global bullet_state
+    #RL-Draw the bullet sprite at the given (x, y) location.
     screen.blit(bulletImage, (x, y))
+    #RL-The bullet image is only blitted when bullet_state is "fire".
     bullet_state = "fire"
-#AK track the game state by using a booean variabl
+    #RL-Change the bullet state to "fire" to indicate the bullet is currently active and should continue moving until it hits something or leaves the screen.
+
+#AK track the game state by using a boo;ean variable
 running = True
 #AK start the game by using a while loop that looks at the boolean var
 while running:
