@@ -47,14 +47,42 @@ background=pygame.image.load('background.jpg')
 background=pygame.transform.scale(background,(800,600))
 
 def menu_screen():
-  screen.fill((0,0,0))
-  text = font.render("Space Invaders", True, (255,255,255))
-  screen.blit(text,(screen_width // 2 - text.get_width() // 2, screen_height // 4))
-  start_button_rect = pygame.Rect(screen_width // 2 - 100, screen_height // 2, 200, 50)
-    pygame.draw.rect(screen, (0, 200, 0), start_button_rect) # Green button
-    start_text = pygame.font.Font(None, 48).render("Start Game", True, (255, 255, 255))
-    screen.blit(start_text, (start_button_rect.x + (start_button_rect.width - start_text.get_width()) // 2,
-                             start_button_rect.y + (start_button_rect.height - start_text.get_height()) // 2))
+    """Display the starting menu and wait for player to click Start"""
+    in_menu = True
+    
+    while in_menu:
+        screen.fill((0, 0, 0))
+        
+        title_font = pygame.font.Font('freesansbold.ttf', 64)
+        title_text = title_font.render("SPACE INVADERS", True, (255, 255, 255))
+        screen.blit(title_text, (screen_width // 2 - title_text.get_width() // 2, screen_height // 3))
+        
+        start_button_rect = pygame.Rect(screen_width // 2 - 100, screen_height // 2 + 50, 200, 60)
+        mouse_pos = pygame.mouse.get_pos()
+        
+    
+        if start_button_rect.collidepoint(mouse_pos):
+            pygame.draw.rect(screen, (0, 255, 0), start_button_rect)
+        else:
+            pygame.draw.rect(screen, (0, 200, 0), start_button_rect)
+        
+        pygame.draw.rect(screen, (255, 255, 255), start_button_rect, 3)  # Border
+        
+        button_font = pygame.font.Font('freesansbold.ttf', 32)
+        start_text = button_font.render("START GAME", True, (255, 255, 255))
+        screen.blit(start_text, (start_button_rect.x + (start_button_rect.width - start_text.get_width()) // 2,
+                                 start_button_rect.y + (start_button_rect.height - start_text.get_height()) // 2))
+        
+        pygame.display.update()
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if start_button_rect.collidepoint(event.pos):
+                    in_menu = False
+    
+    return True
                 
 def levelComplete(level):
     text=game_over_font.render("Level " + str(level) + " Complete!", True, (255,255,255))
