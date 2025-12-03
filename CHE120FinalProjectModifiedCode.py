@@ -46,6 +46,7 @@ bulletImage=pygame.transform.scale(bulletImage,(20,30))
 background=pygame.image.load('background.jpg')
 background=pygame.transform.scale(background,(800,600))
 
+'''
 def menu_screen():
     """Display the starting menu and wait for player to click Start"""
     in_menu = True
@@ -96,7 +97,60 @@ def menu_screen():
                     in_menu = False
     
     return True
-                
+  '''
+def menu_screen():
+    """Display a start menu with a START button."""
+    menu_running = True
+
+    # Fonts
+    title_font = pygame.font.Font('freesansbold.ttf', 64)
+    button_font = pygame.font.Font('freesansbold.ttf', 32)
+
+    # Button rectangle
+    start_button = pygame.Rect(
+        screen_width // 2 - 120,   # x
+        screen_height // 2 + 50,   # y
+        240,                       # width
+        70                         # height
+    )
+
+    while menu_running:
+        screen.fill((0, 0, 0))
+
+        # ----- Title -----
+        title_text = title_font.render("SPACE INVADERS", True, (255, 255, 255))
+        screen.blit(title_text,
+            (screen_width // 2 - title_text.get_width() // 2,
+             screen_height // 3)
+        )
+
+        # ----- Mouse Hover effect -----
+        mouse_pos = pygame.mouse.get_pos()
+        if start_button.collidepoint(mouse_pos):
+            pygame.draw.rect(screen, (0, 255, 0), start_button)  # brighter green
+        else:
+            pygame.draw.rect(screen, (0, 180, 0), start_button)  # darker green
+
+        # Button border
+        pygame.draw.rect(screen, (255, 255, 255), start_button, 3)
+
+        # Button Text
+        button_text = button_font.render("START GAME", True, (255, 255, 255))
+        screen.blit(button_text,
+            (start_button.x + (start_button.width - button_text.get_width()) // 2,
+             start_button.y + (start_button.height - button_text.get_height()) // 2)
+        )
+
+        pygame.display.update()
+
+        # ----- Event Handling -----
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False  # user closes the window
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if start_button.collidepoint(event.pos):
+                    return True  # start the game
+          
 def levelComplete(level):
     text=game_over_font.render("Level " + str(level) + " Complete!", True, (255,255,255))
     screen.blit(text,(150,260))
