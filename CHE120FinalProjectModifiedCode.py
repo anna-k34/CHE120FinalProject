@@ -63,7 +63,7 @@ def show_score(x, y, score_val):
     screen.blit(score, (x , y ))
 
 def game_over():
-    screen_fill((0,0,0))
+    screen.fill((0,0,0))
     game_over_text = game_over_font.render("GAME OVER",
                                            True, (255,255,255))
     text=font.render("The game is over! If you would like to replay, press enter", True, (255,255,255))
