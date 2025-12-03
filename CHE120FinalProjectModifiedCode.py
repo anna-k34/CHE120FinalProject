@@ -8,7 +8,7 @@ github username: anna-k34
 """
 AK-Anna Kelley's comments
 RL-Rhea Lam's comments
-VV - Vivian Vo
+VV - Vivian Vo's comments
 """
 
 
@@ -64,6 +64,7 @@ def show_score(x, y, score_val):
     screen.blit(score, (x , y ))
 
 def game_over():
+    screen.fill((0,0,0))
     game_over_text = game_over_font.render("GAME OVER",
                                            True, (255,255,255))
     text=font.render("The game is over! If you would like to replay, press enter", True, (255,255,255))
@@ -140,7 +141,7 @@ def mainPlay():
     while running:
         if level>len(levelScores):
             
-            return False()
+            return False
         #AK Fill the pygame screen with black
 
         screen.blit(background,(0,0))
@@ -196,7 +197,9 @@ def mainPlay():
                 if abs(player_X-invader_X[i]) < 80:
                     for j in range(no_of_invaders):
                         invader_Y[j] = 2000
-                        
+
+                    screen_fill((0,0,0))
+                    game_over()
                     return False
 
             if invader_X[i] >= 735 or invader_X[i] <= 0:
