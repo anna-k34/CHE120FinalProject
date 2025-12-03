@@ -10,7 +10,7 @@ github username: anna-k34
 
 #AK-Import statement necessary to run the game
 #RL- random and math are built-in python modules and pygame is a set of open-source python modules
-#VV- pygame is for graphics, sounds and inputs. random is for alien positions (generate random numbers). math is for collision detection (math calculations).
+#VV- pygame is for graphics, sounds and inputs. random is for alien positions (generate random x and y value). math is for collision detection (math calculations).
 #NA- random module is mainly used to position the aliens at random positions
 import pygame
 import random
@@ -40,14 +40,14 @@ Invaders Game by:- styles")
 
 
 # Score
-#VV - initializes player's score starting at 0
-#NA- #NA- starts with the players score as zero this increases each time the player hits the alien with a blade 
+#VV - starts player's score at 0
+#NA- starts with the players score as zero this increases each time the player hits the alien with a blade 
 score_val = 0
 #VV - sets position where score is displayed (5 pixels from left, and 5 pixels top)
 scoreX = 5
 scoreY = 5
 
-#VV - creates font object to display the player's score
+#VV - creates font to display the player's score
 font = pygame.font.Font('freesansbold.ttf', 20)
 
 # Game Over
@@ -227,7 +227,7 @@ while running:
                 #VV - display "game over" message and exit the alien loop
                 game_over()
                 break
-        #NA - if the alien hits the right edge (x is more or equal to 735) or left edge (x is less or equal to 0), then reverse its horizontal direction (multiply speed by -1) to make the alien "bounce" off the side and move the alien down by 50 pixels
+        #VV - if the alien hits the right edge (x is more or equal to 735) or left edge (x is less or equal to 0), then reverse its horizontal direction (multiply speed by -1) to make the alien "bounce" off the side and move the alien down by 50 pixels
         if invader_X[i] >= 735 or invader_X[i] <= 0:
             invader_Xchange[i] *= -1
             invader_Y[i] += invader_Ychange[i]
@@ -235,13 +235,13 @@ while running:
       #VV - check if bullet has collided with alien
         collision = isCollision(bullet_X, invader_X[i],
                                 bullet_Y, invader_Y[i])
-      #VV - if collision is detected (bullet hits alien), increase score by 1
+      #VV - if collision is detected (bullet hits alien), increase player score by 1
         if collision:
             score_val += 1
             bullet_Y = 600
           #VV - reset the bullet to the bottom of the screen and set state to "rest"
             bullet_state = "rest"
-          #NA - respawn the hit/collided alien at a new random position at the top of the screen
+          #VV - respawn the hit/collided alien at a new random position at the top of the screen
             invader_X[i] = random.randint(64, 736)
             invader_Y[i] = random.randint(30, 200)
             invader_Xchange[i] *= -1
