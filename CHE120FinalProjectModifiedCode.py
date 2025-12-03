@@ -193,7 +193,9 @@ def mainPlay():
                 if abs(player_X-invader_X[i]) < 80:
                     for j in range(no_of_invaders):
                         invader_Y[j] = 2000
-                        
+
+                    screen_fill((0,0,0))
+                    game_over()
                     return False
 
             if invader_X[i] >= 735 or invader_X[i] <= 0:
