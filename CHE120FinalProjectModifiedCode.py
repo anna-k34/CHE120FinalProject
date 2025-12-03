@@ -53,14 +53,16 @@ def menu_screen():
     while in_menu:
         screen.fill((0, 0, 0))
         
+        # Title
         title_font = pygame.font.Font('freesansbold.ttf', 64)
         title_text = title_font.render("SPACE INVADERS", True, (255, 255, 255))
         screen.blit(title_text, (screen_width // 2 - title_text.get_width() // 2, screen_height // 3))
         
+        # Start button
         start_button_rect = pygame.Rect(screen_width // 2 - 100, screen_height // 2 + 50, 200, 60)
         mouse_pos = pygame.mouse.get_pos()
         
-    
+        # Change button color on hover
         if start_button_rect.collidepoint(mouse_pos):
             pygame.draw.rect(screen, (0, 255, 0), start_button_rect)
         else:
@@ -68,10 +70,21 @@ def menu_screen():
         
         pygame.draw.rect(screen, (255, 255, 255), start_button_rect, 3)  # Border
         
+        # Button text
         button_font = pygame.font.Font('freesansbold.ttf', 32)
         start_text = button_font.render("START GAME", True, (255, 255, 255))
         screen.blit(start_text, (start_button_rect.x + (start_button_rect.width - start_text.get_width()) // 2,
                                  start_button_rect.y + (start_button_rect.height - start_text.get_height()) // 2))
+        
+        pygame.display.update()
+        
+        # Event handling
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if start_button_rect.collidepoint(event.pos):
+                    in_menu = False
         
         pygame.display.update()
 
