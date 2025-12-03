@@ -250,7 +250,7 @@ def mainPlay():
                     for j in range(no_of_invaders):
                         invader_Y[j] = 2000
 
-                    screen_fill((0,0,0))
+                    screen.fill((0,0,0))
                     game_over()
                     return False
 
