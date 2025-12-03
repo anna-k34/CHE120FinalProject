@@ -42,9 +42,8 @@ Invaders Game by:- styles")
 
 # Score
 #VV - initializes player's score starting at 0
-
+#NA- #NA- starts with the players score as zero this increases each time the player hits the alien with a blade 
 score_val = 0
-#NA- starts with the players score as zero this increases each time the player hits the alien with a blade 
 #VV - sets position where score is displayed (5 pixels from left, and 5 pixels top)
 scoreX = 5
 scoreY = 5
@@ -107,7 +106,7 @@ for num in range(no_of_invaders):
 #VV - loads and resizes bullet image to 20x30 pixels
 bulletImage = pygame.image.load('bullet.png')
 bulletImage=pygame.transform.scale(bulletImage,(20,30))
-#VV - sets bullets initial position at 0
+#NA - sets bullets initial position at 0
 bullet_X = 0
 bullet_Y = 500
 #VV - sets bullets horizontal movement speed at 0 (will shoot straight up) and vertical speed at 3 pixels per frame upward
@@ -187,7 +186,7 @@ while running:
                 player_Xchange = 1.7
             #AK this statement checks if the user clicked on the space key, which in turn will fire the bullet at the invaders
             if event.key == pygame.K_SPACE:
-                #AK this if statement checks if they already have an active button, can't click the space button twice
+                #NA this if statement checks if they already have an active button, can't click the space button twice
                 if bullet_state == "rest":
                     #Sets the bullet x variable to where the invader is so it can fire from the player's position
                     bullet_X = player_X
@@ -222,7 +221,7 @@ while running:
                 #VV - display "game over" message and exit the alien loop
                 game_over()
                 break
-        #VV - if the alien hits the right edge (x is more or equal to 735) or left edge (x is less or equal to 0), then reverse its horizontal direction (multiply speed by -1) to make the alien "bounce" off the side and move the alien down by 50 pixels
+        #NA - if the alien hits the right edge (x is more or equal to 735) or left edge (x is less or equal to 0), then reverse its horizontal direction (multiply speed by -1) to make the alien "bounce" off the side and move the alien down by 50 pixels
         if invader_X[i] >= 735 or invader_X[i] <= 0:
             invader_Xchange[i] *= -1
             invader_Y[i] += invader_Ychange[i]
@@ -236,7 +235,7 @@ while running:
             bullet_Y = 600
           #VV - reset the bullet to the bottom of the screen and set state to "rest"
             bullet_state = "rest"
-          #VV - respawn the hit/collided alien at a new random position at the top of the screen
+          #NA - respawn the hit/collided alien at a new random position at the top of the screen
             invader_X[i] = random.randint(64, 736)
             invader_Y[i] = random.randint(30, 200)
             invader_Xchange[i] *= -1
