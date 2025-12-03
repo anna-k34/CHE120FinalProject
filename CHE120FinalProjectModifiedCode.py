@@ -44,6 +44,15 @@ bulletImage=pygame.transform.scale(bulletImage,(20,30))
 background=pygame.image.load('background.jpg')
 background=pygame.transform.scale(background,(800,600))
 
+def menu_screen():
+  screen.fill((0,0,0)
+  text = font.render("Space Invaders", True, (255,255,255))
+  screen.blit(text,(screen_width // 2 - text.get_width() // 2, screen_height // 4))
+  start_button_rect = pygame.Rect(screen_width // 2 - 100, screen_height // 2, 200, 50)
+    pygame.draw.rect(screen, (0, 200, 0), start_button_rect) # Green button
+    start_text = pygame.font.Font(None, 48).render("Start Game", True, (255, 255, 255))
+    screen.blit(start_text, (start_button_rect.x + (start_button_rect.width - start_text.get_width()) // 2,
+                             start_button_rect.y + (start_button_rect.height - start_text.get_height()) // 2))
                 
 def levelComplete(level):
     text=game_over_font.render("Level " + str(level) + " Complete!", True, (255,255,255))
