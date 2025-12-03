@@ -409,14 +409,14 @@ def bullet(x, y, bullet_state):
     bullet_state = "fire"
     return bullet_state
 def drawBomb(x,y):
-  screen.blit(bombImage,(x,y))
-  if menu_screen():
-      run=True
-      while run:     
-          mainPlay()
-          replay=game_over()
-          if not replay:
-              pygame.quit()
-              run=False
-  else:
-      pygame.quit()
+    screen.blit(bombImage,(x,y))
+    if menu_screen():
+        run=True
+        while run:     
+            mainPlay()
+            replay=game_over()
+            if not replay:
+                pygame.quit()
+                run=False
+    else:
+        pygame.quit()
