@@ -149,7 +149,11 @@ def bombsCreate(no_of_bombs, bomb_Xchange, bomb_Ychange, bomb_X,bomb_Y, bombs):
         bomb_X.append(random.randint(60,737))
         bomb_Y.append(random.randint(50, 300))       
         bomb_Ychange.append(0)                        
+<<<<<<< Updated upstream
         bomb_Xchange.append(random.uniform(0.05, 0.2)) 
+=======
+        bomb_Xchange.append(random.uniform(0.3, 0.5)) 
+>>>>>>> Stashed changes
 
 def mainPlay():
     score_val = 0
